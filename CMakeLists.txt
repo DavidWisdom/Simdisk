@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.19)
+project(simple-os)
+set(CMAKE_CXX_STANDARD 20)
+add_subdirectory(lib)
+add_executable(simple-os-simdisk src/simdisk/simdisk.cpp src/simdisk/filesystem.h src/simdisk/filesystem.cpp src/common/common.h src/common/common.cpp)
+add_executable(simple-os-shell src/shell/shell.cpp src/common/common.h src/common/common.cpp src/simdisk/tests/unittest.cpp)
+target_link_libraries(simple-os-simdisk gtest gtest_main)
+target_link_libraries(simple-os-shell gtest gtest_main)
